@@ -1,0 +1,12 @@
+[
+  {
+    "seq": 1,
+    "prev": "ROOT",
+    "digest": "a"
+  },
+  {
+    "seq": 2,
+    "prev": "a",
+    "digest": "b"
+  }
+]

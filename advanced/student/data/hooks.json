@@ -1,0 +1,24 @@
+{
+  "attempts": [
+    {
+      "event": "h1",
+      "status": 503
+    },
+    {
+      "event": "h1",
+      "status": 204
+    },
+    {
+      "event": "h2",
+      "status": 500
+    },
+    {
+      "event": "h2",
+      "status": 500
+    }
+  ],
+  "payload": {
+    "lesson": "webhook",
+    "value": 42
+  }
+}

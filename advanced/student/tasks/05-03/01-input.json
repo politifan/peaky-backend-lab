@@ -1,0 +1,7 @@
+{
+  "max_connections": 100,
+  "reserve": 10,
+  "replicas": 4,
+  "pool": 20,
+  "overflow": 5
+}

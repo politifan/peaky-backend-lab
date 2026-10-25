@@ -1,0 +1,22 @@
+{
+  "threshold": 2,
+  "cooldown": 5,
+  "events": [
+    {
+      "time": 0,
+      "ok": false
+    },
+    {
+      "time": 1,
+      "ok": false
+    },
+    {
+      "time": 2,
+      "ok": true
+    },
+    {
+      "time": 6,
+      "ok": true
+    }
+  ]
+}

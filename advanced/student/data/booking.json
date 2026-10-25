@@ -1,0 +1,27 @@
+{
+  "rooms": [
+    "wood",
+    "art",
+    "robotics"
+  ],
+  "existing": [
+    {
+      "room": "art",
+      "start": 10,
+      "end": 12,
+      "state": "paid"
+    }
+  ],
+  "requests": [
+    {
+      "room": "art",
+      "start": 12,
+      "end": 14
+    },
+    {
+      "room": "art",
+      "start": 11,
+      "end": 13
+    }
+  ]
+}

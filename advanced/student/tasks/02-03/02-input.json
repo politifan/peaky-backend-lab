@@ -1,0 +1,18 @@
+{
+  "balances": {
+    "a": 5,
+    "b": 0
+  },
+  "transfers": [
+    {
+      "from": "a",
+      "to": "b",
+      "amount": 3
+    },
+    {
+      "from": "a",
+      "to": "b",
+      "amount": 3
+    }
+  ]
+}

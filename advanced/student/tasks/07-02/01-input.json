@@ -1,0 +1,25 @@
+{
+  "max_attempts": 2,
+  "events": [
+    {
+      "id": "a",
+      "status": 503
+    },
+    {
+      "id": "a",
+      "status": 204
+    },
+    {
+      "id": "a",
+      "status": 500
+    },
+    {
+      "id": "b",
+      "status": 500
+    },
+    {
+      "id": "b",
+      "status": 500
+    }
+  ]
+}

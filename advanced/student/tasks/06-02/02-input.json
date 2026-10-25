@@ -1,0 +1,14 @@
+{
+  "token": 1,
+  "value": "old",
+  "writes": [
+    {
+      "token": 3,
+      "value": "new"
+    },
+    {
+      "token": 2,
+      "value": "stale"
+    }
+  ]
+}

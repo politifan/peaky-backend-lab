@@ -1,0 +1,20 @@
+{
+  "tenant-a": {
+    "import": [],
+    "clean": [
+      "import"
+    ],
+    "count": [
+      "clean"
+    ],
+    "export": [
+      "count"
+    ]
+  },
+  "tenant-b": {
+    "import": [],
+    "summary": [
+      "import"
+    ]
+  }
+}

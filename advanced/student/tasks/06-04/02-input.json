@@ -1,0 +1,23 @@
+{
+  "snapshot": {
+    "a": 2
+  },
+  "offset": 1,
+  "events": [
+    {
+      "seq": 3,
+      "key": "a",
+      "delta": -1
+    },
+    {
+      "seq": 1,
+      "key": "a",
+      "delta": 8
+    },
+    {
+      "seq": 2,
+      "key": "b",
+      "delta": 4
+    }
+  ]
+}

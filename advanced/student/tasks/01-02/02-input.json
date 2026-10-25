@@ -1,0 +1,12 @@
+{
+  "current": {
+    "name": "a",
+    "note": "b"
+  },
+  "patch": {
+    "note": null
+  },
+  "nullable": [
+    "note"
+  ]
+}

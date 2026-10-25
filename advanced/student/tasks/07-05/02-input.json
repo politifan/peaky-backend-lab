@@ -1,0 +1,18 @@
+{
+  "start": 10,
+  "target": 5,
+  "checks": [
+    {
+      "time": 11,
+      "write": true,
+      "read": false,
+      "isolated": true
+    },
+    {
+      "time": 15,
+      "write": true,
+      "read": true,
+      "isolated": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "task": "a",
+    "op": "acquire"
+  },
+  {
+    "task": "a",
+    "op": "cancel"
+  },
+  {
+    "task": "a",
+    "op": "cancel"
+  }
+]

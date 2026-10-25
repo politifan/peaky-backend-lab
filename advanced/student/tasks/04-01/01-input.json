@@ -1,0 +1,22 @@
+[
+  {
+    "tenant": "a",
+    "key": "k",
+    "body": "x"
+  },
+  {
+    "tenant": "a",
+    "key": "k",
+    "body": "x"
+  },
+  {
+    "tenant": "a",
+    "key": "k",
+    "body": "y"
+  },
+  {
+    "tenant": "b",
+    "key": "k",
+    "body": "x"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "baseline": [
+    10,
+    20
+  ],
+  "canary": [
+    30,
+    40
+  ],
+  "max_ratio": 2,
+  "min_samples": 2
+}

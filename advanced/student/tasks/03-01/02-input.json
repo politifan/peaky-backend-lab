@@ -1,0 +1,10 @@
+{
+  "granted": [
+    "read"
+  ],
+  "required": [
+    "write",
+    "read",
+    "write"
+  ]
+}

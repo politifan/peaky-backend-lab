@@ -1,0 +1,24 @@
+{
+  "now": 5,
+  "stock": 0,
+  "reservations": [
+    {
+      "id": "a",
+      "qty": 2,
+      "expires": 5,
+      "state": "pending"
+    },
+    {
+      "id": "b",
+      "qty": 1,
+      "expires": 4,
+      "state": "paid"
+    },
+    {
+      "id": "c",
+      "qty": 3,
+      "expires": 1,
+      "state": "released"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "sha": "a",
+  "image_sha": "a",
+  "schema_ok": true,
+  "required": [
+    "unit"
+  ],
+  "tests": [
+    {
+      "name": "unit",
+      "status": "pass"
+    },
+    {
+      "name": "unit",
+      "status": "skip"
+    }
+  ]
+}

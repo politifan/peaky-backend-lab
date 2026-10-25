@@ -1,0 +1,18 @@
+[
+  {
+    "event": "a",
+    "effect": "x"
+  },
+  {
+    "event": "a",
+    "effect": "x"
+  },
+  {
+    "event": "b",
+    "effect": "x"
+  },
+  {
+    "event": "b",
+    "effect": "y"
+  }
+]

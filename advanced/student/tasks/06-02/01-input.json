@@ -1,0 +1,21 @@
+{
+  "lease_until": 0,
+  "owner": null,
+  "actions": [
+    {
+      "who": "a",
+      "time": 0,
+      "ttl": 5
+    },
+    {
+      "who": "b",
+      "time": 4,
+      "ttl": 2
+    },
+    {
+      "who": "b",
+      "time": 5,
+      "ttl": 2
+    }
+  ]
+}

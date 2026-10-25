@@ -1,0 +1,8 @@
+{
+  "db": true,
+  "schema": 2,
+  "required_schema": 2,
+  "worker": true,
+  "queue_age": 5,
+  "max_age": 5
+}

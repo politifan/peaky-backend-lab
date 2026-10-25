@@ -1,0 +1,15 @@
+{
+  "schema": 3,
+  "apps": [
+    {
+      "name": "old",
+      "min": 1,
+      "max": 2
+    },
+    {
+      "name": "new",
+      "min": 2,
+      "max": 4
+    }
+  ]
+}

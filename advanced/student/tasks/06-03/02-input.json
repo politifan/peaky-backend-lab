@@ -1,0 +1,14 @@
+[
+  {
+    "tenant": "a:b",
+    "user": "u",
+    "resource": "/x",
+    "version": 1
+  },
+  {
+    "tenant": "a",
+    "user": "b:u",
+    "resource": "/x",
+    "version": 1
+  }
+]

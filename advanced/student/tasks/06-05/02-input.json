@@ -1,0 +1,14 @@
+{
+  "before": {
+    "a": "old",
+    "b": "x"
+  },
+  "after": {
+    "a": "new",
+    "c": "z"
+  },
+  "allowed_change": [
+    "a",
+    "b"
+  ]
+}

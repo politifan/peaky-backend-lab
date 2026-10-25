@@ -1,0 +1,12 @@
+[
+  {
+    "request_tenant": "a",
+    "response_tenant": "b",
+    "id": 2
+  },
+  {
+    "request_tenant": "b",
+    "response_tenant": "b",
+    "id": 2
+  }
+]

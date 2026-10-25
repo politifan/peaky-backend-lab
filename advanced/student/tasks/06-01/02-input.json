@@ -1,0 +1,21 @@
+{
+  "rows": [
+    {
+      "id": 1,
+      "old": "a",
+      "new": null
+    },
+    {
+      "id": 2,
+      "old": "b",
+      "new": "B"
+    },
+    {
+      "id": 3,
+      "old": "c",
+      "new": null
+    }
+  ],
+  "after": -1,
+  "limit": 1
+}

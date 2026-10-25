@@ -1,0 +1,39 @@
+{
+  "organization": "Lantern",
+  "seed": 20261004,
+  "cases": [
+    {
+      "key": "migration",
+      "signals": [
+        "live 200",
+        "ready 503",
+        "write 503"
+      ],
+      "constraint": "preserve stock and reservations"
+    },
+    {
+      "key": "worker",
+      "signals": [
+        "two worker success",
+        "latest result replaced"
+      ],
+      "constraint": "old worker must not overwrite"
+    },
+    {
+      "key": "cache",
+      "signals": [
+        "db path isolated",
+        "cached body depends on first tenant"
+      ],
+      "constraint": "preserve own successful read"
+    },
+    {
+      "key": "duplicate",
+      "signals": [
+        "delivery repeated after sender restart",
+        "balance increments twice"
+      ],
+      "constraint": "one effect per event id"
+    }
+  ]
+}

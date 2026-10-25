@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "value": 0,
+  "writes": [
+    {
+      "expected": 1,
+      "value": 8
+    },
+    {
+      "expected": 1,
+      "value": 9
+    },
+    {
+      "expected": 2,
+      "value": 3
+    }
+  ]
+}

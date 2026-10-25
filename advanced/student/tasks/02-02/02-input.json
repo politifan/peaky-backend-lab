@@ -1,0 +1,17 @@
+{
+  "clients": [
+    [
+      "old"
+    ],
+    [
+      "new"
+    ]
+  ],
+  "columns": [
+    "old",
+    "new"
+  ],
+  "drop": [
+    "old"
+  ]
+}

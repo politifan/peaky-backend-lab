@@ -1,0 +1,11 @@
+{
+  "now": 10,
+  "issuer": "school",
+  "audience": "api",
+  "token": {
+    "iss": "school",
+    "aud": "api",
+    "exp": 11,
+    "sub": "u"
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "a",
+    "tenant": "x",
+    "amount": 3
+  },
+  {
+    "id": "a",
+    "tenant": "y",
+    "amount": 9
+  },
+  {
+    "id": "b",
+    "tenant": "x",
+    "amount": -1
+  }
+]

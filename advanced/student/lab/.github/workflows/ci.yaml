@@ -1,0 +1,26 @@
+name: Python PostgreSQL contracts
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: lantern
+          POSTGRES_PASSWORD: demo-only
+          POSTGRES_DB: lantern
+        ports: [5432:5432]
+        options: >-
+          --health-cmd "pg_isready -U lantern -d lantern"
+          --health-interval 2s --health-timeout 2s --health-retries 20
+    env:
+      DATABASE_URL: postgresql+asyncpg://lantern:demo-only@localhost:5432/lantern
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install -r requirements-lock.txt
+      - run: alembic upgrade head
+      - run: python seed.py
+      - run: python -m pytest -q tests

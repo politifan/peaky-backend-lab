@@ -1,0 +1,22 @@
+{
+  "window": 5,
+  "limit": 2,
+  "events": [
+    {
+      "user": "a",
+      "time": 0
+    },
+    {
+      "user": "a",
+      "time": 1
+    },
+    {
+      "user": "a",
+      "time": 2
+    },
+    {
+      "user": "a",
+      "time": 5
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Анна"
+    },
+    {
+      "id": 2,
+      "name": "Борис"
+    }
+  ],
+  "tickets": [
+    {
+      "id": 7,
+      "owner": 1,
+      "state": "open"
+    },
+    {
+      "id": 2,
+      "owner": 1,
+      "state": "closed"
+    },
+    {
+      "id": 1,
+      "owner": 2,
+      "state": "open"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "checks": [
+    {
+      "name": "db",
+      "passed": true
+    },
+    {
+      "name": "api",
+      "passed": false
+    }
+  ],
+  "required": [
+    "db",
+    "schema",
+    "api"
+  ]
+}

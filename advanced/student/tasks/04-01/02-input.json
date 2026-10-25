@@ -1,0 +1,13 @@
+{
+  "idempotent": true,
+  "budget": 3,
+  "delays": [
+    1,
+    2
+  ],
+  "statuses": [
+    503,
+    429,
+    200
+  ]
+}

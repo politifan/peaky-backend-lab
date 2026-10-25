@@ -1,0 +1,26 @@
+{
+  "required": {
+    "booking": [
+      "race",
+      "restart"
+    ],
+    "hooks": [
+      "signature"
+    ]
+  },
+  "sha": "a",
+  "proofs": [
+    {
+      "project": "booking",
+      "criterion": "race",
+      "passed": true,
+      "sha": "a"
+    },
+    {
+      "project": "booking",
+      "criterion": "restart",
+      "passed": true,
+      "sha": "old"
+    }
+  ]
+}

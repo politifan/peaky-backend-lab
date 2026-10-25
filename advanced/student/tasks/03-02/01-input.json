@@ -1,0 +1,17 @@
+{
+  "tenant": "a",
+  "user": "u",
+  "admin": true,
+  "rows": [
+    {
+      "id": 2,
+      "tenant": "b",
+      "owner": "u"
+    },
+    {
+      "id": 1,
+      "tenant": "a",
+      "owner": "z"
+    }
+  ]
+}

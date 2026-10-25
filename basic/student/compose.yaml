@@ -1,0 +1,19 @@
+name: peaky-backend-basic
+services:
+  db:
+    image: postgres:16.4
+    environment:
+      POSTGRES_DB: backend_lab
+      POSTGRES_USER: learner
+      POSTGRES_PASSWORD: tutorial-only-local
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - lab_db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U learner -d backend_lab"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+volumes:
+  lab_db:

@@ -1,0 +1,13 @@
+Проверка настоящего приложения (локально, без баллов Stepik)
+
+После установки requirements.txt тем же Python:
+python check_practice.py preview.py --mode preview
+python check_practice.py app/main.py --mode persistence
+python check_practice.py app/main.py --mode ownership
+python check_practice.py app/main.py --mode retries
+python check_practice.py app/main.py --mode service
+
+Код возврата 0 означает все открытые проверки пройдены; 1 означает ошибку. JSON показывает каждую проверку. В исходном app/main.py оставлена учебная ошибка сохранения: сначала тест должен упасть, после исправления пройти.
+Без --database-url используется временная SQLite: это проверка поведения приложения, не доказательство работы PostgreSQL. Для PostgreSQL подготовьте отдельную учебную БД миграциями и добавьте --database-url с её адресом. Не используйте рабочую базу.
+Скрипт проверяет настоящее FastAPI через TestClient и пересоздаёт приложение с той же БД. Проверка полного рестарта процессов PostgreSQL/Uvicorn и конкурентных запросов находится в авторском пакете.
+Нативные задания Stepik используют Python 3.12: восемь заданий запускают настоящий FastAPI, SQLAlchemy или pytest, остальные 50 проверяют алгоритмы. PostgreSQL, Alembic, pwdlib и PyJWT в проверенной среде Stepik недоступны; полный сервис проверяется локально. Расширенный проверяющий код Stepik работает отдельно на Python 3.6. Результат локального скрипта не начисляет баллы Stepik.
