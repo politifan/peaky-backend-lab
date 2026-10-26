@@ -1,5 +1,7 @@
-# Peaky Minds Backend learner labs
+# Backend, редакция 3
 
-Existing learner sources for Stepik 301871/301872. Start with START-HERE.txt in the selected level; complete archives with the existing reading materials are attached to course-final-20261026. Basic persistence and advanced incident adapters intentionally remain learner exercises.
+Базовый https://stepik.org/course/301871: от Python/preview к исправному сохраняемому API, затем отдельный `lost_commit` инцидент. SQL выполняется и напрямую, и через SQLAlchemy.
 
-This edition corrects HTTP 200 for replayed reservations, gives the prepared outbox worker a running local demo receiver, and makes the public useful-operation check fail on a contract violation. No additional complete runtime acceptance or independent learner pilot is claimed.
+Продвинутый https://stepik.org/course/301872: JWT интегрирован с маршрутами, HMAC delivery получает durable inbox; нормальные адаптеры по умолчанию, один явный профиль инцидента. PostgreSQL-гонка, чужой доступ, повторы и новый процесс проверяются отдельно. Один законченный итоговый продукт.
+
+Точные команды — START-HERE и Stepik. Локальные проверки не присылают баллы Stepik. Архив DOCX — редакция 2.

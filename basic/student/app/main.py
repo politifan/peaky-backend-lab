@@ -131,7 +131,7 @@ def create_app(database_url,secret,create_schema=False):
    return existing
   value=Ticket(owner_id=current.id,title=data.title,priority=data.priority,request_key=request_key,request_title=data.title,request_priority=data.priority)
   session.add(value)
-  try:session.flush() # PERSISTENCE
+  try:session.commit() # PERSISTENCE
   except IntegrityError:
    session.rollback()
    existing=session.scalar(select(Ticket).where(Ticket.owner_id==current.id,Ticket.request_key==request_key))

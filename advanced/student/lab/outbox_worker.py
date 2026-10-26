@@ -4,6 +4,8 @@ import httpx
 from sqlalchemy import select,update
 from db import Session,engine
 from models import Outbox
+from delivery_signature import signature
+from mock_receiver import TRAINING_SECRET
 async def claim(now,ttl=10):
     async with Session() as s:
         async with s.begin():
@@ -27,7 +29,9 @@ async def main():
             job=await claim(int(time.time()))
             if job is None:break
             try:
-                response=await client.post(url,json={'event':job['event'],'payload':json.loads(job['payload'])})
+                body=json.dumps({'event':job['event'],'tenant':job['tenant'],'payload':json.loads(job['payload'])},sort_keys=True,separators=(',',':')).encode()
+                stamp=str(int(time.time()));secret=os.environ.get('DELIVERY_SECRET',TRAINING_SECRET)
+                response=await client.post(url,content=body,headers={'Content-Type':'application/json','X-Lantern-Timestamp':stamp,'X-Lantern-Signature':signature(secret,stamp,body)})
                 success=200<=response.status_code<300
             except httpx.HTTPError:success=False
             await settle(job,success,int(time.time()))

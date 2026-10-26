@@ -1,13 +1,24 @@
-Peaky Minds Backend advanced. Дополнение 26.10.2026
+Backend — редакция 3, 26.10.2026
+Распакуйте целиком в новую учебную папку. Python 3.12. Windows: py -3.12 -m venv .venv, затем .venv/Scripts/python.exe -m pip install -r requirements.txt. Linux/macOS: python3.12 и .venv/bin/python. Ниже python означает выбранный путь своей venv. Активация/изменение ExecutionPolicy не нужны. Исторические DOCX справочные, текущая методика — Stepik и этот файл, TXT/Markdown достаточен.
 
-Распакуйте целиком. Рабочая папка: student/lab. Python 3.12, venv создают внутри неё. Windows PowerShell: py -3.12 -m venv .venv, затем .venv/Scripts/python.exe -m pip install -r requirements.txt. Linux/macOS: python3.12 -m venv .venv и .venv/bin/python. Дальнейший python в руководствах означает этот полный путь; активация и смена ExecutionPolicy не нужны.
+Рабочая папка student/lab, отдельная от basic. Остановите свой прежний API на 8000. docker compose up --build -d, затем docker compose logs migrate seed api. Проект peaky-backend-advanced-lantern: PostgreSQL loopback:55432, API:8000, receiver:8001. Тома и старые записи сохраняются.
 
-Basic: сначала первые Python/hello/preview, потом SQL и общий app. В app/main.py намеренно не завершена фиксация заявки: публичный тест сохранности должен выявить это до вашего ремонта. Compose называется peaky-backend-basic, PostgreSQL loopback:5432. В PowerShell задают $env:DATABASE_URL и $env:JWT_SECRET, в Bash — export. .env.example автоматически не читается. Используйте новый локальный секрет не короче 32 символов, не показывайте его в отчёте. Миграции выполняют до запуска uvicorn app.main:app. /users создаёт пользователя; /token получает форму, не JSON; POST /tickets требует Idempotency-Key. Изменённое тело того же ключа даёт конфликт, новое намерение получает новый ключ.
+Обычный faults.py исправен. После успешного первого цикла назначьте ОДИН случай: python inject.py migration/worker/cache/duplicate. Для Compose: docker compose exec -T api python inject.py worker. Перезапустите свой API и наблюдайте только этот дефект. inject.py none возвращает обычные адаптеры и имя stock.available после учебного переименования, сохраняя строки. tests/test_incident_contracts.py проверяет старый fencing token, разделение cache и один эффект event. PEAKY_TEST_FAULT=worker/cache/duplicate включает открытый контрпример только для соответствующего теста; после возврата обычного режима результат зелёный.
+Бронь: новый key/qty → 201; точный повтор → 200, тот же id, replayed=true; изменённый qty → 409. tests/test_pg_invariants.py требует настоящую PostgreSQL. Подготовьте выделенный учебный стенд; тест проверяет конкурентный остаток, SQLite не заменяет его.
 
-Advanced: новая отдельная распаковка, не папка basic. Остановите свой старый API на 8000. Из student/lab: docker compose up --build -d, затем logs migrate seed api. Проект peaky-backend-advanced-lantern; база loopback:55432; API loopback:8000; демонстрационный receiver loopback:8001. Не используйте down -v.
+Авторизация интегрирована: AUTH_MODE=demo по умолчанию принимает открытые labels. AUTH_MODE=jwt проверяет подписанный JWT в Depends(identity) настоящих маршрутов. Для PowerShell своей копии:
+$env:AUTH_MODE='jwt'
+$env:JWT_SECRET='my-isolated-training-jwt-secret-32chars'
+docker compose up -d --build api
+docker compose exec -T api python issue_demo_token.py --user alice --tenant school-a --scopes 'read write'
+В Bash используйте export. Issuer — локальный доверенный учебный инструмент, не сервер входа. Запросы без/с истёкшим токеном/неверным audience → 401; read-only запись → 403; чужой tenant/владелец → 404.
+docker compose exec -T api python -m pytest tests/test_jwt_routes.py -q
+Для общего smoke/старых demo-команд верните AUTH_MODE=demo с пересозданием своего api.
 
-Advanced reservations: новое создание 201, повтор того же key/qty 200 с тем же id и replayed=true; конфликт qty 409. Эта редакция исправляет статус найденного повтора. public_smoke.py теперь проверяет эффект и завершается ошибкой при расхождении; это не полный экзамен. Нужна одна единица учебного остатка; исчерпанный остаток не лечат удалением старых бронирований.
+Подписанная доставка:
+docker compose exec -T -e DELIVERY_URL=http://receiver:8001/mock/events api python outbox_worker.py
+HMAC(timestamp + newline + exact body), окно 300 секунд. Receiver сохраняет (tenant,event), hash намерения и payload одной SQLite-транзакцией в receiver-data. Первый приём → 201, точный повтор → 200/replayed без второго эффекта, другое тело прежнего ключа → 409, неверная/просроченная подпись → 401. Открытый DELIVERY_SECRET по умолчанию только учебный; свой задают одинаково api/receiver и пересоздают контейнеры с теми же томами.
+docker compose exec -T api python -m pytest tests/test_receiver.py -q
+Тест подтверждает повтор в новом интерпретаторе, а не только памяти. Самостоятельный опыт: сохранить outbox id/event, получить приём с потерянным для sender подтверждением, перезапустить receiver с тем же томом, повторить и сверить одну запись deliveries и outbox.sent. Новый event не считается точным повтором.
 
-Worker внутри Compose: docker compose exec -T -e DELIVERY_URL=http://receiver:8001/mock/events api python outbox_worker.py. Receiver принимает только демонстрацию: его accepted не доказывает durable inbox или подпись. Реализация этих свойств — ваша практика. faults.py содержит намеренно неверные token/cache/repeat адаптеры. auth.py содержит открытые demo labels, а security_jwt.py — отдельный пример: JWT зависимость нужно интегрировать по уроку, а не объявлять готовой.
-
-Диски, таблицы и старые записи сохраняются. Полезное восстановление подтверждается прежним ID и значениями после нового процесса. Локальные результаты отдельно от баллов Stepik. Рабочий отчёт может быть TXT/Markdown/DOCX; финальная инструкция должна содержать точные команды и версии. Исторические DOCX редакции 2 сохранены как чтение, текущие уточнения — здесь и в Stepik. Обещанная постоянная преподавательская проверка и External Grader не подключены.
+Четыре области портфолио — ВАРИАНТЫ, один законченный продукт обязателен. Сохраните свою версию, запуск, миграции, код/тесты, исходный отказ, исправление, регрессию, новое условие и прежние id после нового процесса. Самостоятельный повтор не является независимой аттестацией. Локальные проверки не присылают баллы в Stepik, External Grader и постоянная преподавательская проверка не подключены.

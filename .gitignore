@@ -6,3 +6,6 @@
 **/.env
 artifacts/
 evidence/
+
+**/incident.json
+**/.pytest_cache/

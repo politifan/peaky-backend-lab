@@ -31,6 +31,9 @@ services:
     build: .
     environment:
       DATABASE_URL: postgresql+asyncpg://lantern:demo-only@db:5432/lantern
+      AUTH_MODE: ${AUTH_MODE:-demo}
+      JWT_SECRET: ${JWT_SECRET:-}
+      DELIVERY_SECRET: ${DELIVERY_SECRET:-lantern-training-delivery-secret-only-20261026}
     ports: ["127.0.0.1:8000:8000"]
     depends_on:
       seed: {condition: service_completed_successfully}
@@ -38,5 +41,10 @@ services:
     build: .
     command: ["uvicorn", "mock_receiver:app", "--host", "0.0.0.0", "--port", "8001"]
     ports: ["127.0.0.1:8001:8001"]
+    environment:
+      RECEIVER_DATABASE: /data/receiver.sqlite
+      DELIVERY_SECRET: ${DELIVERY_SECRET:-lantern-training-delivery-secret-only-20261026}
+    volumes: ["receiver-data:/data"]
 volumes:
   lantern-data:
+  receiver-data:
